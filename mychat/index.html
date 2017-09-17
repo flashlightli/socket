@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+</head>
+<body>
+<div id="a"></div>
+<input type="text" id="q">
+<input type="button" value="发送" id="b">
+<script src="/socket.io/socket.io.js"></script>
+<script>
+var socket=io();
+$("#b").click(function () {
+    if($("#q").val()!=""){
+        socket.emit("111",$("#q").val());
+    }else {
+        return false;
+    }
+})
+    socket.on("qqq",function (msg) {
+        alert(msg);
+       document.getElementById("a").innerHTML+="<p>"+msg+"</p>";
+    })
+</script>
+</body>
+</html>
